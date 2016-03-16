@@ -8,6 +8,7 @@
 
 use LinusShops\Prophet\Events;
 use LinusShops\Prophet\Magento;
+use Behat\Behat\ApplicationFactory;
 
 $frameworkPath = __DIR__;
 $prophetRoot = $argv[1];
@@ -27,3 +28,13 @@ Magento::bootstrap($options);
 Events::dispatch(Events::PROPHET_POSTMAGENTO);
 
 Magento::injectAutoloaders($modulePath, $magentoPath);
+
+$curdir = getcwd();
+chdir($modulePath);
+
+$factory = new ApplicationFactory();
+$app = $factory->createApplication();
+$app->setAutoExit(false);
+
+$app->run($input);
+chdir($curdir);
