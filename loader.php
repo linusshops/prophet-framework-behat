@@ -9,6 +9,7 @@
 use LinusShops\Prophet\Events;
 use LinusShops\Prophet\Magento;
 use Behat\Behat\ApplicationFactory;
+use Symfony\Component\Console\Input\ArgvInput;
 
 $frameworkPath = __DIR__;
 $prophetRoot = $argv[1];
@@ -31,6 +32,18 @@ Magento::injectAutoloaders($modulePath, $magentoPath);
 
 $curdir = getcwd();
 chdir($modulePath);
+
+//Massage argv so that behat doesn't choke.
+$args = $_SERVER['argv'];
+if (isset($args[4])) {
+    $args = array_slice($args, 4, null, true);
+} else {
+    $args = array();
+}
+
+array_unshift($args, 'behat');
+
+$input = new ArgvInput($args);
 
 $factory = new ApplicationFactory();
 $app = $factory->createApplication();
