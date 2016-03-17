@@ -18,7 +18,7 @@ $magentoPath = $argv[3];
 
 //Local autoloader
 require($frameworkPath.'/vendor/autoload.php');
-require($prophetRoot.'/Injector.php');
+require($prophetRoot.'/src/LinusShops/Prophet/Injector.php');
 
 Injector::bootMagento($magentoPath);
 Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
