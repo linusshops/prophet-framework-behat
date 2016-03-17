@@ -7,9 +7,9 @@
  */
 
 use LinusShops\Prophet\Events;
-use LinusShops\Prophet\Magento;
 use Behat\Behat\ApplicationFactory;
 use Symfony\Component\Console\Input\ArgvInput;
+use LinusShops\Prophet\Injector;
 
 $frameworkPath = __DIR__;
 $prophetRoot = $argv[1];
@@ -18,17 +18,17 @@ $magentoPath = $argv[3];
 
 //Local autoloader
 require($frameworkPath.'/vendor/autoload.php');
+require($prophetRoot.'/Injector.php');
 
-//Prophet autoloader
-require($prophetRoot.'/vendor/autoload.php');
+Injector::bootMagento($magentoPath);
+Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
 
-$options = new \LinusShops\Prophet\Events\Options();
-
-Events::dispatch(Events::PROPHET_PREMAGENTO, $options);
-Magento::bootstrap($options);
-Events::dispatch(Events::PROPHET_POSTMAGENTO);
-
-Magento::injectAutoloaders($modulePath, $magentoPath);
+\LinusShops\Prophet\Injector::setPaths(array(
+    'module' => $modulePath,
+    'magento' => $magentoPath,
+    'prophet' => $prophetRoot,
+    'framework' => $frameworkPath
+));
 
 $curdir = getcwd();
 chdir($modulePath);
@@ -49,5 +49,7 @@ $factory = new ApplicationFactory();
 $app = $factory->createApplication();
 $app->setAutoExit(false);
 
+Injector::dispatchPremodule();
 $app->run($input);
+Injector::dispatchPostmodule();
 chdir($curdir);
