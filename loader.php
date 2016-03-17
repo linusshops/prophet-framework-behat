@@ -20,7 +20,7 @@ $magentoPath = $argv[3];
 require($frameworkPath.'/vendor/autoload.php');
 require($prophetRoot.'/src/LinusShops/Prophet/Injector.php');
 
-Injector::bootMagento($magentoPath);
+//Injector::bootMagento($magentoPath);
 Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
 
 \LinusShops\Prophet\Injector::setPaths(array(

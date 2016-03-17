@@ -759,12 +759,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/linusshops/behat-contexts.git",
-                "reference": "8aa404cfc4f2970bf4f6dad37ea86e0064d5a3d2"
+                "reference": "5b1393ee2d689ced29ddcf78f0550674078c7f81"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/linusshops/behat-contexts/zipball/8aa404cfc4f2970bf4f6dad37ea86e0064d5a3d2",
-                "reference": "8aa404cfc4f2970bf4f6dad37ea86e0064d5a3d2",
+                "url": "https://api.github.com/repos/linusshops/behat-contexts/zipball/5b1393ee2d689ced29ddcf78f0550674078c7f81",
+                "reference": "5b1393ee2d689ced29ddcf78f0550674078c7f81",
                 "shasum": ""
             },
             "require": {
@@ -804,7 +804,7 @@
                 "Context",
                 "testing"
             ],
-            "time": "2016-03-15 18:48:00"
+            "time": "2016-03-17 20:22:50"
         },
         {
             "name": "psr/http-message",
