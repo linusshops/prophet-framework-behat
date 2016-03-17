@@ -30,6 +30,11 @@ Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
     'framework' => $frameworkPath
 ));
 
+if (!is_file($modulePath.'/behat.yml')) {
+    echo "behat.yml does not exist.".PHP_EOL;
+    return;
+}
+
 $curdir = getcwd();
 chdir($modulePath);
 
