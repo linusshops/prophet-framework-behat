@@ -51,8 +51,10 @@ foreach ($args as $key => $arg) {
     $arg = trim($arg);
     //If it starts with features, turn it into an argument
     if (strpos($arg, 'features') === 0) {
+        $fparam = explode('=', $arg);
+        array_shift($fparam);
         unset($args[$key]);
-        array_unshift($args, $arg);
+        array_unshift($args, implode('=', $fparam));
     }
 }
 
