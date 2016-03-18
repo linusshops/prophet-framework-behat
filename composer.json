@@ -1,4 +1,10 @@
 {
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:linusshops/behat-contexts"
+    }
+  ],
   "require": {
     "behat/behat": "~3",
     "behat/mink-selenium2-driver":"~1",
