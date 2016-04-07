@@ -50,5 +50,8 @@ return [
         'files' => [
             'behat.yml' => $yml
         ]
+    ],
+    'ideHelperClasses' => [
+        'LinusShops\Contexts\Web'
     ]
 ];
