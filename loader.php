@@ -20,6 +20,8 @@ $magentoPath = $argv[3];
 require($prophetRoot.'/src/LinusShops/Prophet/Injector.php');
 
 //Prepare autoloaders
+//Magento comes first, as all the other autoloaders will prepend. This is important,
+//as if Magento fails to load a class, it crashes and burns.
 Injector::bootMagento($magentoPath);
 require($frameworkPath.'/vendor/autoload.php');
 Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
