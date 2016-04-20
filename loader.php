@@ -16,11 +16,12 @@ $prophetRoot = $argv[1];
 $modulePath = $argv[2];
 $magentoPath = $argv[3];
 
-//Local autoloader
-require($frameworkPath.'/vendor/autoload.php');
+//Acquire the Prophet injector
 require($prophetRoot.'/src/LinusShops/Prophet/Injector.php');
 
-//Injector::bootMagento($magentoPath);
+//Prepare autoloaders
+Injector::bootMagento($magentoPath);
+require($frameworkPath.'/vendor/autoload.php');
 Injector::injectAutoloaders($modulePath, $magentoPath, $prophetRoot);
 
 \LinusShops\Prophet\Injector::setPaths(array(
